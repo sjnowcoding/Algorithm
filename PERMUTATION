@@ -1,0 +1,44 @@
+// Permutation
+/*
+permu함수는 
+자신의 위치로 부터 한 칸씩 옆의 것과 
+자리를 바꿔가면서 마지막에 도달하면 
+출력합니다.  
+
+*/
+
+#include <stdio.h>
+
+
+char A[4]={'a','b','c','d'};
+
+void printA() {
+	for (int i=0; i<4; i++) {
+		printf("%c ", A[i]);
+	}
+	printf("\n");
+}
+
+
+void permu(int i){
+	int t;	
+	// end point
+	if(i==4) { printA(); return; }
+	
+
+	for(  int k=i; k<4; k++) {
+		// change Value 
+		t = A[i]; A[i]=A[k]; A[k] = t;
+
+		permu(i+1);
+		// change Value to make before state
+		t = A[i]; A[i]=A[k]; A[k] = t;
+	}
+	
+}
+
+
+int main() {
+	permu(0);
+	return 0;
+	}

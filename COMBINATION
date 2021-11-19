@@ -1,0 +1,35 @@
+// NUMBER OF CASES IN COMBINATION
+
+#include <stdio.h>
+
+char A[4]={'a','b','c','d'};
+char CA[4];
+
+
+void combi(int n, int r, int q) 
+{
+	if(r==0){ 
+	
+	for(int i=0;i<=q-1; i++) {
+		printf("%c ", CA[i]);
+	}
+	printf("\n");
+	
+	} 
+	
+	else if (r>n) { return ;}
+	
+	else {
+		CA[r-1] = A[n-1]; 
+		combi(n-1, r-1, q);
+		combi(n-1, r, q );
+			
+	}
+}
+
+int main(){
+	int N = 4;
+	int R = 2;
+	combi(N, R, R);
+	return 0;
+}

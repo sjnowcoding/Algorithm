@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <windows.h>
+int A[5]={0,};
+
+//PRINT ARRAY 
+void printA() { 
+	for(int i=0; i<5; i++) { 
+		printf("%d ", A[i]);} 
+		printf("\n"); 
+		Sleep(1000);
+}
+
+void combi(int n){
+		if (n==4) { 
+			
+			// CHANGE LAST VALUE AFTER PRINT (출력후 마지막 값 바꾸기 )
+			printA();  
+			A[n]=1-A[n];
+		}
+		
+		else {
+		
+			combi(n+1);			
+			// RECALL FUNCTION FOR PRINTING AGAIN (마지막자리의 바뀐 값을 출력하기 위해 다시 들어가기)
+			combi(n+1);
+			
+			// CHANGE SELF VALUE (자신의 값 바꾸기)
+			A[n] = 1-A[n];
+		
+		}
+}
+
+int main()
+{
+	
+	combi(-1);
+	
+	return 0;
+}
